@@ -1,0 +1,876 @@
+/*
+####################################################################
+ General 
+####################################################################
+*/
+*{
+    cursor: none;
+    -webkit-font-smoothing: antialiased;
+}
+html {
+    height:100%;
+}
+body {
+    
+    margin: 0;
+    overflow-x: hidden;
+    font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif; ;
+    background-color: #fff;
+    color: #050608;
+    height:100%;
+}
+
+a {
+    text-decoration: none;
+    color:#050608;
+}
+p{
+    font-size: 1.4rem ;
+    font-weight: 300;
+}
+
+h1 {
+  font-family: 'Catamaran', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  margin-bottom: 5%;
+  background: linear-gradient(to right, #d3cce3, #e9e4f0); 
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.transition {
+    width:100%;
+    position: absolute;
+    overflow:hidden;
+    height:20%;
+    
+}
+.segment{
+    transition: transform 1s;
+    will-change: transform;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  display:none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #050608, #090e0d);
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #d3cce3, #e9e4f0);   
+  height:10px;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.section{
+    transition: transform 1s;
+    will-change: transform;
+}
+
+.parallax{
+    height:100%;
+    width:100%;
+    perspective: 1000px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: translateZ(0) scale(1);   
+    
+}
+
+.custom-cursor {
+    mix-blend-mode: difference;
+    position: absolute;
+    background: linear-gradient(to right, #d3cce3, #e9e4f0);
+    display: block;
+    width: 20px;
+    height: 20px;
+    transition: 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity;
+    user-select: none;
+    pointer-events: none;
+    z-index: 10000;
+    border-radius: 100%;
+	transform: scale(1);
+}
+.custom-cursor-active{
+	opacity: 1;
+	transform: scale(0.6);
+    transition: 0.4s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform;
+}
+.custom-cursor  .hovered {
+	opacity: 0.08;
+}
+/*
+####################################################################
+ Appearing animations
+####################################################################
+*/
+.hidden{
+    opacity: 0;
+    
+}
+.show{
+    opacity: 1;
+    transition: all 2s ;
+}
+
+/*
+####################################################################
+Hidden elements on homepage
+*/
+.hiddenHome .logoLine1{
+    transform: translate(-40%,-90%);
+    fill: white;
+    transition: transform 1s, fill 2s;
+}
+.hiddenHome .logoLine2{
+    transform: translate(-30%,-60%);
+    fill: white;
+    transition: transform 1s, fill 2s;
+}
+.hiddenHome .logoCircle{
+    transform: translateX(-30%);
+    fill: white;
+    transition: transform 1s, fill 2s;
+}
+.hiddenHome .one{
+   transform: translateY(-300%);
+   transition: transform 0.6s;
+}
+.hiddenHome .two{
+    transform: translateY(-300%);
+   transition: transform 1s;
+}
+.hiddenHome .three{
+    transform: translateY(-300%);
+   transition: transform 1.4s;
+}
+.hiddenHome #container{
+   transform: translateX(-100%) skew(-50deg);
+   transition: transform 1.4s; 
+}
+ 
+/*
+####################################################################
+Shown elements on homepage
+*/
+.showHome {}
+   
+.showHome .logoLine1{
+     
+    transform: translate(0,0);
+    transition: transform 1s, fill 2s;
+    fill:transparent;
+
+}
+.showHome  .logoLine2{
+     
+    transform: translate(0,0);
+    transition: transform 1s, fill 2s;
+    fill:transparent;
+}
+.showHome  .logoCircle{
+    transform: translate(0,0);
+    transition: transform 1s, fill 2s;
+    fill:transparent;
+}
+.showHome .one{
+   transform: translateY(0%);
+}
+.showHome .two{
+   transform: translateY(0%);
+}
+.showHome .three{
+   transform: translateY(0%);
+}
+.showHome #container{
+   transform: translateX(0%) skew(0deg);
+    transition: transform 1.4s;
+}
+
+/*
+####################################################################
+ Header
+####################################################################
+*/
+header {
+    
+    position:fixed;
+    width:100%;
+    height: 10%;
+    z-index: 10;
+    padding-top: 2%;
+}
+.blend{
+    
+    mix-blend-mode: difference;
+        
+}
+.logo{
+    height:5%;
+    width: 5%;
+    min-width: 80px;
+    position:relative;
+    float:left;
+    left:5%;
+}
+.logoSvg polygon, .logoSvg circle{
+    
+    stroke: white;
+    stroke-width: 3;
+    fill: transparent;
+    transition: fill 0.3s ease-in-out;
+}
+.logoSvg .rect{
+    
+    transform: translate(-40%,0%) rotate(-30deg);
+    fill: white;
+    transition: transform 0.3s ease-in-out;
+}
+.logoSvg:hover .rect{
+    
+     transform: translate(20%,90%) rotate(-30deg);
+     fill: white;
+}
+
+.nonMobile {
+    display:block;
+}
+.nonMobile ul{
+    display:flex;
+    justify-content: space-around;
+}
+#menuToggle {
+    display: none;
+}
+nav{
+    
+    position: relative;
+    float: right;
+    z-index: 10;
+    right:5vw;
+    top:40%;
+    width:45vw;
+    max-width: 600px;
+    
+    
+}
+.rectangle{
+    fill:white;
+    transform: translateY(0%);
+    transition: transform 0.3s ease-in-out;
+}
+.menu-item:hover .rectangle, .activePage .rectangle{
+    
+    transform: translateY(100%);
+}
+.about{
+    height: 1.5rem;
+    fill:none;
+    stroke:white;
+    stroke-width: 0.8;
+}
+.svgNav{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.svgNav a{
+    margin-left:5%;
+    margin-right: 5%;
+}
+.svgNav a::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 0, 0.4);
+  color: white;
+}
+.menu-item{
+     
+    width: 90px;
+    height: 30px;
+    fill:none;
+    stroke:#fff;
+    stroke-miterlimit:10;
+    stroke-width:0.3px;
+    
+}
+/*
+####################################################################
+01. Home page
+####################################################################
+*/
+
+#home {
+    
+    background-color:#fff;
+    height: 110%;
+    width: 100vw;
+    position:relative;
+    z-index: 1;
+    transform-style: preserve-3d;
+    margin-bottom: -10%;
+}
+
+
+#container {
+    
+    
+    height: 65%;
+    width: 110vw;
+    position:absolute;
+    top:25%;
+    left:-8vw;
+    overflow: hidden;
+    z-index: 2;
+     
+}
+.portfolio{
+    
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+    
+    
+    mix-blend-mode: difference;
+}
+.portfolio h1{
+    margin: 0;
+    font-size: 15rem;
+    color:#fefafd;
+    background:none;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-family:  Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif; ;
+    -webkit-transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
+    
+    -webkit-text-fill-color: initial;
+}
+
+
+/*
+####################################################################
+02. About 
+####################################################################
+*/
+
+#about {
+    
+    
+    height: 100%;
+    width: 100vw;
+    position:relative;
+    background-color:#050608;
+    color:#ffffff;
+    z-index: 1;
+    transform-style: preserve-3d;
+    
+    
+   
+}
+
+
+.aboutLeft{
+    
+    margin:auto;
+    position:relative;
+    width: 30vw;
+    top:40%;
+    left: -10%;
+    z-index:1;
+    transform: translateZ(500px) scale(0.5) ;
+    
+}
+.aboutLeft h1{
+    margin-top: 20%;
+}
+.aboutRight{
+    
+    margin:auto;
+    position:relative;
+    width: 40vw;
+    height: 40vw;
+    left:15%;
+    top:-10%;
+    transform: translateZ(200px) scale(0.7);
+    z-index: 2;
+   
+}
+.tilt{
+    width: 100%;
+    height: 100%;
+   transform-style: preserve-3d;
+   transform: perspective(2000px)
+}
+.aboutPicture{
+    
+    position: absolute;
+    width: 100%;
+    
+}
+.faceMask{
+    position:absolute;
+    fill: none;
+    stroke: #fff;
+    transform: translateZ(40px);
+}
+#secondTransition{
+    bottom: -20%;   
+}
+
+/*
+####################################################################
+03. Work 
+####################################################################
+*/
+#work{
+    
+    background-color: #fff;
+    height: 100%;
+    width: 100vw;
+    position:relative;
+    transform-style: preserve-3d; 
+      
+}
+.workContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    top:10%;
+    height:100%;
+    transform: translateZ(0px) ;
+    
+      
+}
+
+
+
+.workBox {
+    position: relative;
+    width: 20vw;
+    height:20vw;
+    top:30%;
+    background-color: white;
+     transition: transform 0.25s;
+    -webkit-transition: transform 0.25s;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+.workBox a{
+    
+    position: absolute;
+    display:block;
+    height:100%;
+    width:100%;
+    z-index: 3;
+  
+}    
+     
+    
+
+.workBox h2{
+    position: absolute;
+    top:40%;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 400;
+    z-index: 2;
+    opacity: 0;
+    transition: all 1s;
+    transform: translateZ(20px);
+      
+}
+.workBox:hover h2{
+   
+    opacity:1;
+}
+.workBox img{
+    width:20vw;
+    height:20vw;
+    opacity: 0.4;
+    transition: all 0.5s;
+    
+}
+
+.workBox:hover img{
+    opacity:0.6;
+}
+.svgContainer{
+
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    top:-5%;
+    width: 100%;
+    height:100%;
+    transform: translateZ(500px) scale(0.5) ;
+    pointer-events: none;
+}
+.lineArt {
+    position: relative;
+    top: 12vw;
+    left:8%;
+    z-index: 2;
+    width: 20vw;
+    
+    
+ 
+}
+.lineAnimation{
+    
+    fill: none;
+    stroke: #050608;
+    stroke-width: 0.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    
+}
+  
+
+#first .lineAnimation {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 300;
+    transition: all 1s linear;
+}
+.firstAnimation {
+  
+    stroke-dashoffset: 300;  
+}
+#second .lineAnimation {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 240;
+    transition: all 1s linear;
+}
+.secondAnimation {  
+    stroke-dashoffset: 240;
+}
+#third .lineAnimation {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 80;
+    transition: all 1s linear ;
+}
+.thirdAnimation {
+    stroke-dashoffset: 80;        
+}
+
+
+/*
+####################################################################
+04. Contact
+####################################################################
+*/
+#contact{
+    
+    background-color: #050608;
+    height: 100%;
+    width: 100vw;
+    position:relative;
+    color:#fff;
+    transform-style: preserve-3d;
+    
+    
+}
+#contactMe{
+    margin:auto;
+    position:relative;
+    display:flex;
+    flex-wrap: wrap;
+    top:25%;
+    width:30vw;
+    right:10%;
+    transform: translateZ(500px) scale(0.5) ;
+}
+#contactMe a{
+    color:#888;
+}
+#contactMe a:hover{
+    color:#222;
+}
+
+.copyright{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right:0;
+    margin:auto;
+    width: 70vw;
+    font-size:0.8rem;
+    text-align: center;
+    mix-blend-mode: difference;
+    color:#fff;
+    
+}
+.copyright p{
+   font-size:0.8rem;
+   font-weight: 300;
+   
+}
+
+ /*
+####################################################################
+MOBILE - MEDIA QUERRY MAX WIDTH 600
+####################################################################
+*/
+
+@media only screen and (max-width: 600px) {
+    
+    
+    h1{
+        font-size:2rem;
+    }
+    p{
+        
+       font-size: 1rem; 
+    }
+    .custom-cursor{
+        display:none;
+    }
+/*
+####################################################################
+ Header - MOBILE
+####################################################################
+*/
+    .logo{
+        width:20%;
+        
+    }
+    .nonMobile{
+        display:none;
+    }
+    nav{
+        width: 15vw;
+        right:0;
+        top:60%;
+    }
+    nav a{
+        font-size:2rem;
+        color:#fff;
+    }
+    #menuToggle
+    {
+      display: block;
+      position: relative;
+      
+      z-index: 1;
+
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    #menuToggle input
+    {
+      display: block;
+      width: 40px;
+      height: 32px;
+      position: absolute;
+      top: -7px;
+      left: -5px;
+
+      cursor: pointer;
+
+      opacity: 0; 
+      z-index: 2; 
+
+      -webkit-touch-callout: none;
+    }
+
+    #menuToggle span
+    {
+      display: block;
+      width: 33px;
+      height: 4px;
+      margin-bottom: 5px;
+      position: relative;
+
+      background: #fff;
+      border-radius: 3px;
+
+      z-index: 1;
+
+      transform-origin: 4px 0px;
+
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                  opacity 0.55s ease;
+    }
+
+    #menuToggle span:first-child
+    {
+      transform-origin: 0% 0%;
+    }
+
+    #menuToggle span:nth-last-child(2)
+    {
+      transform-origin: 0% 100%;
+    }
+
+    #menuToggle input:checked ~ span
+    {
+      opacity: 1;
+      transform: rotate(45deg) translate(-2px, -1px);
+      background: #fff;
+    }
+
+    #menuToggle input:checked ~ span:nth-last-child(3)
+    {
+      opacity: 0;
+      transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    
+    #menuToggle input:checked ~ span:nth-last-child(2)
+    {
+      transform: rotate(-45deg) translate(0, -1px);
+    }
+
+  
+    #menu
+    {
+      position: absolute;
+      width: 40vw;
+      margin: -100px 0 0 -43vw;
+      padding: 50px;
+      padding-top: 125px;
+
+      list-style-type: none;
+      -webkit-font-smoothing: antialiased;
+
+      transform-origin: 0% 0%;
+      transform: translate(100%, 0);
+
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+      text-align: right;
+      list-style-position: inside;
+    }
+
+    #menu li
+    {
+      padding: 10px 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    #menuToggle input:checked ~ ul
+    {
+      transform: none;
+    }
+    
+    .parallax{
+        
+        overflow-y: scroll; /* has to be scroll, not auto */
+        -webkit-overflow-scrolling: touch;
+    }
+/*
+####################################################################
+01. Home page - MOBILE
+####################################################################
+*/  
+    .portfolio{
+        transform: translateZ(0) scale(1);
+    }
+    .portfolio h1{
+        font-size: 6rem;
+    }
+    
+/*
+####################################################################
+02. About me - MOBILE
+####################################################################
+*/
+    .aboutLeft{
+        width:70vw;
+        top:30%;
+        left:0;
+        transform: translateZ(0) scale(1);
+    }
+    .aboutRight{
+        width:70vw;
+        top:40%;
+        left:0;
+        transform: translateZ(0) scale(1);
+    }
+    
+/*
+####################################################################
+03. Work - MOBILE
+####################################################################
+*/
+    #work{
+        height: 300vw;
+      
+    }
+    .workContainer {
+        flex-wrap: wrap;
+        align-content: center;
+        overflow: hidden;
+        top:0;
+        
+    }
+    .workBox{
+        height:60vw;
+        width: 60vw;
+        top:0;
+        margin: 10% 0 10% 0;
+    }
+    .workBox img{
+        height:60vw;
+        width: 60vw;
+    }
+    .workBox h2{
+        font-size: 1.3rem;
+        margin-left:5%; /* compensation for the image offset */
+        top:50%;
+    }
+    
+    .lineArt{
+        
+        width:60vw;
+        height: 60vw;
+        top:10%;
+        left:25%;
+        padding: 10% 0 10% 0;
+    }
+    .svgContainer{
+        flex-wrap:wrap;
+        transform: translateZ(0px) scale(1);
+        align-content: center;
+       
+    }
+/*
+####################################################################
+04. Contact - MOBILE
+####################################################################
+*/
+    .contactMe{
+        transform: translateZ(0) scale(1);
+    }
+
+    
+}
