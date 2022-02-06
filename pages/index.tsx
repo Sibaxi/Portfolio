@@ -8,6 +8,7 @@ import About from "../components/About";
 import Work from "../components/Work";
 import { useRef, useState } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import Blob from "../components/Interactive";
 
 function Randomize(min: number, max: number) {
   return Math.random() * (max - min) + min;
@@ -68,6 +69,7 @@ const Home: NextPage = () => {
             <Work />
           </div>
 
+          <Blob />
           <div className="absolute inset-0 flex flex-col items-end justify-between">
             <motion.div
               initial={{ scale: 2 }}
