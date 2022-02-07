@@ -3,6 +3,13 @@
 @tailwind utilities;
 @import url("./locomotive.css");
 
+@font-face {
+  font-family: "Monument Extended";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/MonumentExtended-Regular.woff2") format("woff2");
+}
+
 html,
 body {
   padding: 0;

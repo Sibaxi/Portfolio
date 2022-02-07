@@ -1,29 +1,38 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { LineSegments, WebGLRenderer } from "three";
 import SimplexNoise from "simplex-noise";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import useDetectSize from "../hooks/useDetectSize";
 
 export default function Blob() {
   const container = useRef(null);
   const simplex = new SimplexNoise();
+  const screen = useDetectSize().width;
+  const [visible, setVisible] = useState(true);
 
   let renderer: WebGLRenderer,
     scene: THREE.Scene,
     camera: THREE.Camera,
-    sphere: LineSegments;
+    sphere: LineSegments,
+    size: number;
 
   useEffect(() => {
     if (window && container.current) {
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 
+      size =
+        window.innerWidth > 1024
+          ? window.innerWidth / 2.5
+          : window.innerWidth / 1.2;
+
       renderer = new THREE.WebGLRenderer({
         canvas: container.current,
         antialias: true,
       });
 
-      renderer.setSize(window.innerWidth / 2.5, window.innerWidth / 2.5);
+      renderer.setSize(size, size);
       renderer.setPixelRatio(window.devicePixelRatio);
 
       console.log(scene.children);
@@ -45,16 +54,26 @@ export default function Blob() {
 
       // Cleanup on unmount, otherwise stuff will linger in GPU
       return () => {
-        renderer.forceContextLoss();
-        renderer.dispose();
-        sphere.geometry.dispose();
-        // sphere.material.dispose();
+        setVisible(false);
       };
     }
   }, []);
 
+  useEffect(() => {
+    if (!visible) {
+      renderer.forceContextLoss();
+      renderer.dispose();
+      sphere.geometry.dispose();
+      //   sphere.material.dispose();
+    }
+  }, [visible]);
+
   function onWindowResize() {
-    renderer.setSize(window.innerWidth / 3, window.innerWidth / 3);
+    size =
+      window.innerWidth > 1024
+        ? window.innerWidth / 2.5
+        : window.innerWidth / 1.2;
+    renderer.setSize(size, size);
   }
 
   function update() {
@@ -93,8 +112,7 @@ export default function Blob() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      animate={{ opacity: visible ? 1 : 0 }}
       transition={{ duration: 0.6 }}
       className="absolute right-0 bottom-0"
     >
