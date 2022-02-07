@@ -23,7 +23,7 @@ export default function Blob() {
         antialias: true,
       });
 
-      renderer.setSize(window.innerWidth / 2, window.innerWidth / 2);
+      renderer.setSize(window.innerWidth / 2.5, window.innerWidth / 2.5);
       renderer.setPixelRatio(window.devicePixelRatio);
 
       console.log(scene.children);
@@ -39,8 +39,6 @@ export default function Blob() {
       camera.position.z = 2.2;
 
       renderer.render(scene, camera);
-
-      console.log(sphere.geometry.getAttribute("position").array);
 
       window.addEventListener("resize", onWindowResize, false);
       requestAnimationFrame(animate);
@@ -66,11 +64,9 @@ export default function Blob() {
 
     // change '0.003' for more aggressive animation
     var time = performance.now() * 0.00015;
-    //console.log(time)
     const vertices = sphere.geometry.getAttribute("position");
     const p = new THREE.Vector3();
 
-    console.log(vertices);
     //go through vertices here and reposition them
 
     // change 'k' value for more spikes
@@ -85,18 +81,6 @@ export default function Blob() {
     }
     sphere.geometry.attributes.position.needsUpdate = true; // required after the first render
     sphere.geometry.computeBoundingSphere();
-
-    // change 'k' value for more spikes
-    // var k = 3;
-    // for (var i = 0; i < sphere.geometry.vertices.length; i++) {
-    //   var p = sphere.geometry.vertices[i];
-    //   p.normalize().multiplyScalar(
-    //     1 + 0.3 * noise.perlin3(p.x * k + time, p.y * k, p.z * k)
-    //   );
-    // }
-    // sphere.geometry.computeVertexNormals();
-    // sphere.geometry.normalsNeedUpdate = true;
-    // sphere.geometry.verticesNeedUpdate = true;
   }
 
   function animate() {

@@ -5,17 +5,17 @@ export default function Work() {
     {
       title: "Argeta soundtasting",
       img: "https://picsum.photos/200/200",
-      url: "",
+      url: "https://soundtasting.argeta.com/en/",
     },
     {
       title: "Lahkonocnice",
       img: "https://picsum.photos/200/200",
-      url: "",
+      url: "https://www.lahkonocnice.si",
     },
     {
       title: "Hypex",
       img: "https://picsum.photos/200/200",
-      url: "",
+      url: "https://hypex.si/en",
     },
     {
       title: "Argeta soundtasting",
@@ -27,6 +27,7 @@ export default function Work() {
     <section
       id="Work"
       data-scroll-section
+      data-scroll
       className="min-h-screen flex flex-col lg:h-full justify-center lg:px-40 py-40"
     >
       <div className=" max-w-xl">
