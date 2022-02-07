@@ -4,6 +4,7 @@ import { LineSegments, WebGLRenderer } from "three";
 import SimplexNoise from "simplex-noise";
 import { motion, AnimatePresence } from "framer-motion";
 import useDetectSize from "../hooks/useDetectSize";
+import cx from "classnames";
 
 export default function Blob() {
   const container = useRef(null);
@@ -113,7 +114,7 @@ export default function Blob() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: visible ? 1 : 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 1.2 }}
       className="absolute right-0 bottom-0"
     >
       <canvas ref={container} />;
