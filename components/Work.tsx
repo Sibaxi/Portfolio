@@ -23,17 +23,17 @@ export default function Work({ onVisible }: Props) {
       img: "/projects/hypex.png",
       url: "https://hypex.si/en",
     },
-    // {
-    //   title: "Argeta soundtasting",
-    //   img: "/projects/soundtasting.png",
-    //   url: "",
-    // },
+    {
+      title: "CNJ 10 years",
+      img: "/projects/cnj10.png",
+      url: "https://10years.cnj.si/",
+    },
   ];
   return (
     <section
       id="Work"
       data-scroll-section
-      className="lg:min-h-screen flex flex-col lg:h-full justify-center lg:px-40 py-20 pb-28 lg:py-40"
+      className="flex flex-col justify-center py-20 lg:min-h-screen lg:h-full lg:px-40 pb-28 lg:py-40"
     >
       <InView
         threshold={0.3}
@@ -41,22 +41,22 @@ export default function Work({ onVisible }: Props) {
           onVisible(inView);
         }}
       >
-        <div className=" max-w-xl">
-          <h2 className="text-3xl lg:text-5xl text-white font-bold font-heading">
+        <div className="max-w-xl ">
+          <h2 className="text-3xl font-bold text-white lg:text-5xl font-heading">
             Work
           </h2>
-          <p className="text-white mt-8 text-sm lg:text-base">
+          <p className="mt-8 text-sm text-white lg:text-base">
             Here are some of the projects
             <br /> I worked on as developer in recent years...
           </p>
-          <div className="grid lg:grid-cols-2 mt-8 gap-6 pr-20">
+          <div className="grid gap-6 pr-20 mt-8 lg:grid-cols-2">
             {projects.map((project, index) => (
               <a
                 href={project.url}
                 target="_blank"
                 rel="noreferrer"
                 key={index}
-                className="block border border-gray-400 p-4 hover:scale-105 transition duration-200"
+                className="block p-4 transition duration-200 border border-gray-400 hover:scale-105"
               >
                 <Image
                   src={project.img}
@@ -68,7 +68,7 @@ export default function Work({ onVisible }: Props) {
                   height="300"
                   alt={project.title}
                 />
-                <h3 className=" text-white font-heading mt-4 text-sm lg:text-base">
+                <h3 className="mt-4 text-sm text-white  font-heading lg:text-base">
                   {project.title}
                 </h3>
               </a>
