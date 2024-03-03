@@ -4,6 +4,18 @@ type Props = {
   onVisible: Function;
 };
 
+const skills = [
+  "React",
+  "Next",
+  "Vue",
+  "Nuxt",
+  "Tailwind CSS",
+  "Framer Motion",
+  "Three.js",
+  "Capacitor",
+  "React Native",
+];
+
 export default function About({ onVisible }: Props) {
   return (
     <section
@@ -17,7 +29,7 @@ export default function About({ onVisible }: Props) {
           onVisible(inView);
         }}
       >
-        <h2 className="text-3xl font-bold text-white lg:text-5xl font-heading">
+        <h2 className="text-3xl font-bold text-white lg:text-5xl font-heading font-extralight ">
           About
         </h2>
         <p className="max-w-xl mt-8 text-sm text-white lg:text-base">
@@ -41,12 +53,14 @@ export default function About({ onVisible }: Props) {
           .
         </p>
 
-        <h3 className="max-w-xl pb-1 mt-6 text-lg text-white border-b border-gray-400 font-heading">
+        <h3 className="max-w-xl pb-1 mt-8 text-lg text-white border-b border-gray-400 font-heading font-extralight ">
           Stack
         </h3>
-        <p className="mt-4 text-sm text-white lg:text-base">
-          React, Next, Vue, Nuxt, Tailwind CSS
-        </p>
+        <div className="flex flex-wrap max-w-xl mt-2 text-sm text-white gap-y-1 gap-x-4 lg:text-base">
+          {skills.map((skill, index) => (
+            <p key={index}>{skill}</p>
+          ))}
+        </div>
       </InView>
     </section>
   );

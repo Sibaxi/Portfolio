@@ -52,7 +52,7 @@ const Home: NextPage = () => {
                     delay: index * 0.12,
                     opacity: { duration: 1 },
                   }}
-                  className="relative text-base font-bold text-white lg:text-lg font-heading group"
+                  className="relative text-base font-bold text-white lg:text-lg font-heading font-extralight  font-extralight group"
                 >
                   {item}
                   <div

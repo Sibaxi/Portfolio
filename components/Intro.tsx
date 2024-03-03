@@ -26,7 +26,7 @@ export default function Intro({ onVisible }: Props) {
             ease: "easeOut",
             opacity: { duration: 1 },
           }}
-          className="text-4xl font-bold text-white  lg:text-8xl font-heading"
+          className="text-4xl font-bold text-white  lg:text-8xl font-heading font-extralight "
         >
           Portfolio
         </motion.h1>

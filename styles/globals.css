@@ -10,6 +10,13 @@
   src: url("/fonts/MonumentExtended-Regular.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Monument Extended";
+  font-weight: 200;
+  font-display: swap;
+  src: url("/fonts/MonumentExtended-Ultralight.woff2") format("woff2");
+}
+
 html,
 body {
   padding: 0;

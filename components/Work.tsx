@@ -24,9 +24,14 @@ export default function Work({ onVisible }: Props) {
       url: "https://hypex.si/en",
     },
     {
-      title: "CNJ 10 years",
-      img: "/projects/cnj10.png",
-      url: "https://10years.cnj.si/",
+      title: "Zavetisce Ljubljana",
+      img: "/projects/zavetisce.png",
+      url: "https://www.zavetisce-ljubljana.si/",
+    },
+    {
+      title: "Outfit 7",
+      img: "/projects/outfit.png",
+      url: "https://outfit7.com/",
     },
   ];
   return (
@@ -42,7 +47,7 @@ export default function Work({ onVisible }: Props) {
         }}
       >
         <div className="max-w-xl ">
-          <h2 className="text-3xl font-bold text-white lg:text-5xl font-heading">
+          <h2 className="text-3xl font-bold text-white lg:text-5xl font-heading font-extralight ">
             Work
           </h2>
           <p className="mt-8 text-sm text-white lg:text-base">
@@ -61,14 +66,14 @@ export default function Work({ onVisible }: Props) {
                 <Image
                   src={project.img}
                   className={cx(
-                    "w-full object-cover",
+                    "w-full object-cover aspect-square ",
                     index === 0 ? "object-center" : " object-left"
                   )}
                   width="300"
                   height="300"
                   alt={project.title}
                 />
-                <h3 className="mt-4 text-sm text-white  font-heading lg:text-base">
+                <h3 className="mt-4 text-sm tracking-wider text-white font-heading font-extralight lg:text-base">
                   {project.title}
                 </h3>
               </a>
