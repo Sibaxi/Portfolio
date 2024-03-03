@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { LineSegments, WebGLRenderer } from "three";
-import SimplexNoise from "simplex-noise";
+import SimplexNoise, { createNoise3D } from "simplex-noise";
 import { motion, AnimatePresence } from "framer-motion";
 import useDetectSize from "../hooks/useDetectSize";
 import cx from "classnames";
 
 export default function Blob() {
   const container = useRef(null);
-  const simplex = new SimplexNoise();
+  const simplex = createNoise3D();
   const screen = useDetectSize().width;
   const [visible, setVisible] = useState(true);
 
@@ -50,16 +50,16 @@ export default function Blob() {
 
       window.addEventListener("resize", onWindowResize, false);
       requestAnimationFrame(animate);
-
-      // Cleanup on unmount, otherwise stuff will linger in GPU
-      return () => {
-        setVisible(false);
-      };
     }
+    // Cleanup on unmount, otherwise stuff will linger in GPU
+    return () => {
+      console.log(visible);
+      // setVisible(false);
+    };
   }, []);
 
   useEffect(() => {
-    if (!visible) {
+    if (!visible && renderer && sphere) {
       renderer.forceContextLoss();
       renderer.dispose();
       sphere.geometry.dispose();
@@ -93,7 +93,7 @@ export default function Blob() {
     for (let vertexIndex = 0; vertexIndex < vertices.count; vertexIndex++) {
       p.fromBufferAttribute(vertices, vertexIndex);
       p.normalize().multiplyScalar(
-        1 + 0.3 * simplex.noise3D(p.x * k + time, p.y * k, p.z * k)
+        1 + 0.3 * simplex(p.x * k + time, p.y * k, p.z * k)
       );
       vertices.setXYZ(vertexIndex, p.x, p.y, p.z);
     }
