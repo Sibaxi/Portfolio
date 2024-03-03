@@ -36,7 +36,6 @@ export default function Blob() {
       renderer.setSize(size, size);
       renderer.setPixelRatio(window.devicePixelRatio);
 
-      console.log(scene.children);
       const geometry = new THREE.SphereGeometry(1, 66, 16);
       const material = new THREE.LineBasicMaterial({ color: 0xd3d3d3 });
 
@@ -45,7 +44,6 @@ export default function Blob() {
       scene.add(sphere);
       //   const cube = new THREE.Mesh(geometry, material);
       //   scene.add(cube);
-      console.log(scene.children);
       camera.position.z = 2.2;
 
       renderer.render(scene, camera);
@@ -115,7 +113,7 @@ export default function Blob() {
       initial={{ opacity: 0 }}
       animate={{ opacity: visible ? 1 : 0 }}
       transition={{ duration: 1.2 }}
-      className="absolute right-0 bottom-0"
+      className="absolute bottom-0 right-0"
     >
       <canvas ref={container} />;
     </motion.div>

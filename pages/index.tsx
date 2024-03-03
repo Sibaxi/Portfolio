@@ -23,10 +23,6 @@ const Home: NextPage = () => {
   const containerRef = useRef(null);
   const screen = useDetectSize().width;
 
-  useEffect(() => {
-    console.log(containerRef);
-  }, [containerRef]);
-
   return (
     <>
       <Head>
@@ -42,10 +38,9 @@ const Home: NextPage = () => {
         }}
         watch={[screen]}
         containerRef={containerRef}
-        onUpdate={() => console.log("sss")}
       >
         <main data-scroll-container ref={containerRef} className="bg-black ">
-          <nav className="fixed lg:absolute bottom-0 lg:bottom-auto lg:left-0 lg:h-full w-full lg:w-auto z-30 flex lg:flex-col justify-between lg:justify-center px-8 lg:px-20 py-4 lg:py-0 lg:space-y-24">
+          <nav className="fixed bottom-0 z-30 flex justify-between w-full px-8 py-4 lg:absolute lg:bottom-auto lg:left-0 lg:h-full lg:w-auto lg:flex-col lg:justify-center lg:px-20 lg:py-0 lg:space-y-24">
             {menu.map((item, index) => (
               <a href={`#${item}`} data-scroll-to key={index}>
                 <motion.button
@@ -57,7 +52,7 @@ const Home: NextPage = () => {
                     delay: index * 0.12,
                     opacity: { duration: 1 },
                   }}
-                  className="relative text-base lg:text-lg font-bold text-white font-heading group"
+                  className="relative text-base font-bold text-white lg:text-lg font-heading group"
                 >
                   {item}
                   <div
@@ -88,7 +83,7 @@ const Home: NextPage = () => {
             />
           </div>
 
-          <div className="fixed lg:absolute bottom-0 z-10  h-40 w-full lg:hidden bg-gradient-to-b from-transparent  to-black "></div>
+          <div className="fixed bottom-0 z-10 w-full h-40 lg:absolute lg:hidden bg-gradient-to-b from-transparent to-black "></div>
 
           <Blob />
 
